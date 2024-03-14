@@ -1,0 +1,5 @@
+--Problem!--
+
+Build a job scheduling system using greedy algorithms to optimize
+tasks based on completion time, priority, or other factors.
+Analyze the efficiency and performance of different greedy algorithms.
