@@ -156,7 +156,7 @@ class Patients:
         name = input("Name: ")
         age = int(input("Age: "))
         sex = input("Sex: ")
-        op_time = input("Operation Time: ")
+        op_time = int(input("Operation Time(hrs): "))
         priority = input("Priority: ")
         admission_date = input("Admission Date: ")
         admission_type = input("Admission Type: ")
@@ -185,7 +185,7 @@ class Patients:
                 # Append all rows from store_rows to DataFrame
                 for row in rows:
                     new_row = pd.DataFrame(row, index=[0])
-                    self.df = self.df.append(new_row, ignore_index=True)
+                    self.df = self.df._append(new_row, ignore_index=True)
 
                 # Save the updated DataFrame
                 self.df.to_excel("Hospital ER.xlsx", index=False)
@@ -202,6 +202,13 @@ def main():
     if prompt == 1:
         patients = Patients("Hospital ER.xlsx")
         patients.add_patients()
+
+        continue_prompt = int(input("[1] View Schedule [2] Exit: "))
+        if continue_prompt == 1:
+            scheduler = Scheduler("Hospital ER.xlsx")
+            scheduler.user_interface()
+        elif continue_prompt == 2:
+            print("Exiting....")
     elif prompt == 2:
         scheduler = Scheduler("Hospital ER.xlsx")
         scheduler.user_interface()
